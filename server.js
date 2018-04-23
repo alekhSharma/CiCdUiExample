@@ -1,11 +1,33 @@
-var http = require("http");
-const PORT = process.env.PORT || 5000
+var sfdx = require('sfdx-node');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var Promise = require('promise');
+var path = require('path');
+
+const PORT = process.env.PORT || 3000;
+
+app.get('/', function(req, res) {
+   res.sendfile(__dirname + '/index.html');
+});
+
+io.on('connection', function(socket) { 
+
+	 console.log('Client connected...');
+	  
+      socket.on('AuthMyOrg', function()
+      {
+              sfdx.auth.webLogin({  
+          })
+          .then(function(Authmyorg){
+              console.log('Authorized org');
+              io.emit('Authmyorg',Authmyorg);
+          });
+      });
 
 
-http.createServer(function(request, response){
+});
 
-	response.writeHead(200, {'Content-Type':'text/plain'});
-	
-	response.end('Hello world\n');
-}).listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
+http.listen(3000, function() {
+   console.log('listening on *:3000');
+});
