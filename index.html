@@ -14,13 +14,14 @@
 
 </head>
 <body>
-	<button type="button" onclick="AuthMyOrg()">Authenticate Dev Hub</button>
 	<script>
-	var socket = io();
-	
+		var socket = io();
 		function AuthMyOrg(){
 			socket.on('AuthMyOrg');
-	</script>	
+		}
+	</script>
+	<button type="button" onclick="AuthMyOrg()">Authenticate Dev Hub</button>
+		
 </body>
 
 </html>
