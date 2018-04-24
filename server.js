@@ -10,6 +10,13 @@ const server = express()
   .use((req, res) => res.sendFile(__dirname + '/index.html'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
+express.use(function(request, response, next){
+        response.header("Access-Control-Allow-Origin", "*");
+        response.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+        response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");
+        next();
+    });
+
 const io = socketIO(server);
   
 io.on('connection', (socket) => {
