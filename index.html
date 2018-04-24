@@ -16,8 +16,10 @@
 <body>
 	<button type="button" onclick="AuthMyOrg()">Authenticate Dev Hub</button>
 	<script>
+		var socket = io.connect( '', {'transports': ['websocket', 'polling']});
 		function AuthMyOrg(){
-                socket.emit('AuthMyOrg');
+			console.log('inside fucntion');
+                	socket.emit('AuthMyOrg');
            	 }
 	</script>	
 </body>
