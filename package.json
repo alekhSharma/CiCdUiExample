@@ -25,11 +25,9 @@
     "url": "https://github.com/alekhSharma/CiCdUiExample/issues"
   },
   "homepage": "https://github.com/alekhSharma/CiCdUiExample#readme",
-  "description": "",
   "dependencies": {
     "express": "^4.16.3",
     "sfdx-node": "0.0.1",
     "socket.io": "^2.1.0"
   }
-
 }
